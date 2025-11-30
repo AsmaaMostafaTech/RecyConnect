@@ -1,0 +1,58 @@
+/* Food Surplus page styles — baby-blue theme, rounded cards */
+:root {
+  --fs-hero-bg: linear-gradient(135deg, rgba(77,168,218,0.12), rgba(44,127,184,0.06));
+}
+
+.food-page {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #0f1724;
+}
+
+.food-hero {
+  background: var(--fs-hero-bg);
+  padding: 48px 0;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  margin-bottom: 24px;
+}
+
+.food-hero .hero-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.food-hero h1 {
+  margin: 0 0 6px;
+  font-size: 1.9rem;
+  color: #094b66;
+}
+.food-hero .lead { color: #0b556c; opacity: 0.95; }
+
+.controls-row { margin-bottom: 18px; }
+.search-input .form-control { border-radius: 999px; }
+.search-input .input-group-text { background: white; border-radius: 999px 0 0 999px; }
+
+.listing.card { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15,41,64,0.06); border: none; }
+.listing .card-img-top { height: 160px; object-fit: cover; }
+.listing .card-body { padding: 1rem; }
+.listing .card-title { font-size: 1.05rem; margin-bottom: 0.25rem; }
+.listing .meta { color: #64748b; }
+
+.contact-seller { border-radius: 999px; }
+.view-post { border-radius: 999px; }
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+  .food-hero .hero-inner { flex-direction: column; text-align: center; gap: 12px; }
+  .food-hero .hero-cta { width: 100%; }
+}
+
+/* subtle hover */
+.listing.card:hover { transform: translateY(-6px); transition: transform 200ms ease; }
+
+/* small utility */
+.text-muted.small { font-size: 0.82rem; }
+
+/* no-results */
+.no-results { padding: 40px 0; text-align: center; color: #475569; }

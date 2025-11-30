@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - RecyConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/farmer-dashboard.css">
+</head>
+<body>
+    <div data-include="includes/navbar.html"></div>
+    <script src="js/include-html.js"></script>
+
+    <div class="d-none d-lg-block" style="height: 70px;"></div>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>RecyConnect</h2>
+                <p>Farmer Dashboard</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#overview"><i class="fas fa-home"></i> Overview</a></li>
+                    <li><a href="#log-waste"><i class="fas fa-trash"></i> Log Waste</a></li>
+                    <li><a href="#schedule"><i class="fas fa-calendar-alt"></i> Schedule Pickup</a></li>
+                    <li><a href="#impact"><i class="fas fa-chart-line"></i> Impact</a></li>
+                    <li><a href="#analytics"><i class="fas fa-chart-pie"></i> Analytics</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4CAF50&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Farmer</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-notification"><i class="fas fa-bell"></i></button>
+                    <button class="btn btn-primary">Log Out</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Overview -->
+            <section id="overview" class="section">
+                <h2>Dashboard Overview</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-trash"></i></div>
+                        <div class="card-content">
+                            <h3>Total Waste Logged</h3>
+                            <p class="number">1,245 kg</p>
+                            <p class="trend up"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-truck"></i></div>
+                        <div class="card-content">
+                            <h3>Scheduled Pickups</h3>
+                            <p class="number">3</p>
+                            <p class="trend up"><i class="fas fa-arrow-up"></i> 1 new this week</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="card-content">
+                            <h3>CO2 Reduced</h3>
+                            <p class="number">2.4 t</p>
+                            <p class="trend up"><i class="fas fa-arrow-up"></i> 15% from last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-coins"></i></div>
+                        <div class="card-content">
+                            <h3>Earnings</h3>
+                            <p class="number">$1,850</p>
+                            <p class="trend up"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Waste Log Form -->
+                <div id="log-waste" class="section">
+                    <h3>Log Agricultural Waste</h3>
+                    <form id="wasteForm" class="form-container">
+                        <div class="form-group">
+                            <label for="wasteType">Waste Type</label>
+                            <select id="wasteType" required>
+                                <option value="">Select waste type</option>
+                                <option value="crop_residue">Crop Residue</option>
+                                <option value="manure">Manure</option>
+                                <option value="plant_trimmings">Plant Trimmings</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wasteAmount">Amount (kg)</label>
+                            <input type="number" id="wasteAmount" placeholder="Enter amount in kg" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="wasteDate">Date</label>
+                            <input type="date" id="wasteDate" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Log Waste</button>
+                    </form>
+                </div>
+
+                <!-- Schedule Pickup -->
+                <div id="schedule" class="section">
+                    <h3>Schedule a Pickup</h3>
+                    <form id="pickupForm" class="form-container">
+                        <div class="form-group">
+                            <label for="pickupDate">Preferred Date</label>
+                            <input type="date" id="pickupDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupTime">Preferred Time</label>
+                            <select id="pickupTime" required>
+                                <option value="">Select time slot</option>
+                                <option value="morning">Morning (8 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                                <option value="evening">Evening (4 PM - 7 PM)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wasteList">Waste Items</label>
+                            <div id="wasteItems">
+                                <div class="waste-item">
+                                    <select class="waste-type" required>
+                                        <option value="">Select waste type</option>
+                                        <option value="crop_residue">Crop Residue</option>
+                                        <option value="manure">Manure</option>
+                                        <option value="plant_trimmings">Plant Trimmings</option>
+                                    </select>
+                                    <input type="number" class="waste-amount" placeholder="kg" required>
+                                    <button type="button" class="btn-remove" onclick="removeWasteItem(this)">×</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="addWasteItem()">+ Add Another Item</button>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Schedule Pickup</button>
+                    </form>
+                </div>
+
+                <!-- Impact Tracking -->
+                <div id="impact" class="section">
+                    <h3>Your Recycling Impact</h3>
+                    <div class="impact-cards">
+                        <div class="impact-card">
+                            <i class="fas fa-tree"></i>
+                            <h4>Trees Saved</h4>
+                            <p class="number">42</p>
+                        </div>
+                        <div class="impact-card">
+                            <i class="fas fa-water"></i>
+                            <h4>Water Saved</h4>
+                            <p class="number">12,500 L</p>
+                        </div>
+                        <div class="impact-card">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Energy Saved</h4>
+                            <p class="number">8,400 kWh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Charts -->
+                <div id="analytics" class="section">
+                    <h3>Waste Analytics</h3>
+                    <div class="chart-container">
+                        <div class="chart-card">
+                            <h4>Waste by Type (This Month)</h4>
+                            <canvas id="wasteTypeChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h4>Monthly Waste Trend</h4>
+                            <canvas id="wasteTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="section">
+                    <h3>Recent Activity</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Activity</th>
+                                    <th>Details</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nov 20, 2025</td>
+                                    <td>Waste Logged</td>
+                                    <td>150 kg Crop Residue</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nov 18, 2025</td>
+                                    <td>Pickup Scheduled</td>
+                                    <td>#P-2025-11-22</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nov 15, 2025</td>
+                                    <td>Payment Received</td>
+                                    <td>$350.00</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nov 10, 2025</td>
+                                    <td>Waste Logged</td>
+                                    <td>85 kg Manure</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="js/farmer-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Map — RecyConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/map-interactive.css">
+</head>
+<body>
+  <div data-include="includes/navbar.html"></div>
+  <script src="js/include-html.js"></script>
+
+  <!-- Add space for fixed navbar -->
+  <div class="d-none d-lg-block" style="height: 85px;"></div>
+  <div class="d-lg-none" style="height: 70px;"></div>
+
+  <main class="container main-content">
+    <section class="hero">
+      <h1>RecyConnect Map</h1>
+      <p class="lead">Find nearby Food Surplus, Upcycling Spots, and Agricultural Waste locations.</p>
+    </section>
+
+    <section class="map-controls">
+      <div class="filter-row">
+        <button class="filter-btn active" data-type="all">All</button>
+        <button class="filter-btn" data-type="food">Food Surplus</button>
+        <button class="filter-btn" data-type="upcycle">Upcycling</button>
+        <button class="filter-btn" data-type="agri">Agricultural Waste</button>
+      </div>
+    </section>
+
+    <section class="map-wrapper" id="map">
+      <div class="map-canvas" role="img" aria-label="Map of nearby resources">
+        <!-- Example pins positioned using percentage within the map area -->
+        <button class="map-pin pin-food" data-type="food" style="left:28%;top:42%;" aria-label="Food Surplus: Central Market">
+          <span class="pin-dot" aria-hidden="true"></span>
+          <div class="pin-popup">
+            <strong>Food Surplus</strong>
+            <div class="popup-body">Central Market — surplus fruits & veg</div>
+          </div>
+        </button>
+
+        <button class="map-pin pin-upcycle" data-type="upcycle" style="left:62%;top:34%;" aria-label="Upcycling Spot: Riverside Workshop">
+          <span class="pin-dot" aria-hidden="true"></span>
+          <div class="pin-popup">
+            <strong>Upcycling Spot</strong>
+            <div class="popup-body">Riverside Workshop — accepts plastics & textiles</div>
+          </div>
+        </button>
+
+        <button class="map-pin pin-agri" data-type="agri" style="left:48%;top:68%;" aria-label="Agricultural Waste: Hilltop Fields">
+          <span class="pin-dot" aria-hidden="true"></span>
+          <div class="pin-popup">
+            <strong>Agricultural Waste</strong>
+            <div class="popup-body">Hilltop Fields — crop residue available</div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year">2025</span> RecyConnect</p>
+    </div>
+  </footer>
+
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/map-interactive.js" defer></script>
+</body>
+</html>

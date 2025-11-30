@@ -1,0 +1,47 @@
+/* Home page specific styles - clean, modern hero, features, testimonials */
+:root{
+  --primary-100:#e8f5fb;
+  --primary-500:#2c7fb8;
+  --primary-600:#226b9a;
+  --muted:#6b7280;
+  --card-bg:#ffffff;
+}
+
+/* Hero */
+.home-hero{
+  background: linear-gradient(135deg, #f7fbff 0%, rgba(77,168,218,0.06) 40%, #ffffff 100%);
+  padding: 4.5rem 0 3rem;
+}
+.home-hero .hero-inner{ display:flex; align-items:center; gap:3rem; }
+.hero-copy{ max-width:720px; }
+.hero-copy h1{ font-size:2.4rem; color:var(--primary-600); margin-bottom:0.6rem; font-weight:700; }
+.hero-copy p.lead{ color:var(--muted); font-size:1.05rem; margin-bottom:1.25rem; }
+.hero-ctas{ display:flex; gap:0.9rem; flex-wrap:wrap; }
+.btn-hero{ padding:0.85rem 1.6rem; border-radius:999px; font-weight:600; }
+.btn-primary-hero{ background:linear-gradient(90deg,var(--primary-500),var(--primary-600)); color:#fff; border:none; box-shadow:0 8px 24px rgba(44,127,184,0.18); }
+.btn-outline-hero{ background:transparent; border:1px solid rgba(44,127,184,0.12); color:var(--primary-600); }
+
+.hero-visual{ flex:1; display:flex; justify-content:center; }
+.hero-card{ width:100%; max-width:420px; background:var(--card-bg); border-radius:16px; padding:1.25rem; box-shadow:0 10px 30px rgba(16,24,40,0.06); }
+.hero-card img{ width:100%; border-radius:10px; display:block; }
+
+/* Features */
+.features{ padding:3rem 0; }
+.features-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
+.feature{ background:var(--card-bg); padding:1.2rem; border-radius:12px; box-shadow:0 6px 20px rgba(13,21,32,0.04); }
+.feature h4{ margin:0.6rem 0 0; font-size:1.05rem; color:#0f1724; }
+.feature p{ color:var(--muted); font-size:0.95rem; margin:0; }
+
+/* Testimonials */
+.testimonials{ background:linear-gradient(180deg,#f8fafc,#fff); padding:2.5rem 0; }
+.testimonial-list{ display:flex; gap:1rem; align-items:stretch; flex-wrap:wrap; }
+.testimonial{ flex:1 1 260px; background:var(--card-bg); padding:1rem; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.04); }
+.testimonial p{ color:var(--muted); margin-bottom:0.75rem; }
+.testimonial .meta{ font-weight:600; color:var(--primary-600); font-size:0.95rem; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .home-hero .hero-inner{ flex-direction:column-reverse; text-align:center; }
+  .hero-visual{ margin-bottom:1rem; }
+  .hero-copy h1{ font-size:1.8rem; }
+}

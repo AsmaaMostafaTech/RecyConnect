@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1764468583468",
+    "images": [],
+    "createdAt": "2025-11-30T02:09:43.468Z"
+  },
+  {
+    "id": "1764468981543",
+    "images": [],
+    "createdAt": "2025-11-30T02:16:21.543Z"
+  },
+  {
+    "id": "1764469269743",
+    "title": "الابال",
+    "category": "food",
+    "description": "تلاتب",
+    "quantity": "2",
+    "unit": "kg",
+    "expiryDate": "2025-11-28",
+    "location": "لة",
+    "images": [
+      "uploads\\1764469269729-img1.png"
+    ],
+    "createdAt": "2025-11-30T02:21:09.743Z"
+  }
+]

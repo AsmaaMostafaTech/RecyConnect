@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Food Surplus — RecyConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/food-surplus.css">
+</head>
+<body>
+  <div data-include="includes/navbar.html"></div>
+  <script src="js/include-html.js"></script>
+
+  <div class="d-none d-lg-block" style="height:85px;"></div>
+  <div class="d-lg-none" style="height:70px;"></div>
+
+  <main class="food-page">
+    <header class="food-hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Food Surplus Listings</h1>
+          <p class="lead">Find surplus food near you — connect with donors and reduce waste.</p>
+        </div>
+        <div class="hero-cta">
+          <a href="post-surplus.html" class="btn btn-lg btn-primary">Post Surplus</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="container controls-row">
+      <div class="row g-2 align-items-center">
+        <div class="col-md-5">
+          <div class="search-input input-group">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input id="fs-search" class="form-control" placeholder="Search listings, location, or seller" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select id="fs-filter" class="form-select">
+            <option value="">All types</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="fruits">Fruits</option>
+            <option value="baked">Baked Goods</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select id="fs-distance" class="form-select">
+            <option value="">Any distance</option>
+            <option value="5">Within 5 km</option>
+            <option value="15">Within 15 km</option>
+            <option value="50">Within 50 km</option>
+          </select>
+        </div>
+        <div class="col-md-2 text-md-end">
+          <button id="fs-clear" class="btn btn-outline-secondary">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container listings-section">
+      <div id="listings" class="row g-4">
+        <!-- Listing cards (static examples; JS will enhance) -->
+        <div class="col-sm-6 col-lg-4">
+          <article class="listing card h-100">
+            <img src="https://images.unsplash.com/photo-1542444459-db4b4cf0f2a8?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Vegetables">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Fresh Mixed Vegetables</h5>
+              <p class="mb-2 text-muted small">Ahmed • Giza • 20 kg</p>
+              <p class="flex-grow-1">Surplus mixed vegetables, harvested today. Ideal for community kitchens.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="meta small text-muted">Pickup: Tomorrow</div>
+                <div>
+                  <button class="btn btn-sm btn-outline-primary view-post" data-id="surplus-001" data-seller="Ahmed">View</button>
+                  <button class="btn btn-sm btn-primary contact-seller" data-id="surplus-001" data-seller="Ahmed">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <article class="listing card h-100">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Fruits">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Ripe Fruit Box</h5>
+              <p class="mb-2 text-muted small">Fatma • Cairo • 15 kg</p>
+              <p class="flex-grow-1">Mixed ripe fruits suitable for donation — pickup this afternoon.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="meta small text-muted">Pickup: Today</div>
+                <div>
+                  <button class="btn btn-sm btn-outline-primary view-post" data-id="surplus-002" data-seller="Fatma">View</button>
+                  <button class="btn btn-sm btn-primary contact-seller" data-id="surplus-002" data-seller="Fatma">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <article class="listing card h-100">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Bread">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Baked Goods — Day-old</h5>
+              <p class="mb-2 text-muted small">Mona • Alexandria • 50 pcs</p>
+              <p class="flex-grow-1">Day-old bread and pastries, packaged and ready for collection.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="meta small text-muted">Pickup: Today</div>
+                <div>
+                  <button class="btn btn-sm btn-outline-primary view-post" data-id="surplus-003" data-seller="Mona">View</button>
+                  <button class="btn btn-sm btn-primary contact-seller" data-id="surplus-003" data-seller="Mona">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-4">
+    <div class="container text-center">
+      <p>&copy; 2025 RecyConnect</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/food-surplus-fixed.js"></script>
+  <!-- Sign Up / Login Modals -->
+  <div class="modal fade" id="recySignupModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="recySignupForm">
+          <div class="modal-body">
+            <div class="mb-3"><label class="form-label">Name</label><input id="signupName" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Email</label><input id="signupEmail" type="email" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Password</label><input id="signupPass" type="password" class="form-control" required></div>
+          </div>
+          <div class="modal-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="recyLoginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="recyLoginForm">
+          <div class="modal-body">
+            <div class="mb-3"><label class="form-label">Email</label><input id="loginEmail" type="email" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Password</label><input id="loginPass" type="password" class="form-control" required></div>
+          </div>
+          <div class="modal-footer"><button type="submit" class="btn btn-primary">Login</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

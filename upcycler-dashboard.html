@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcycler Dashboard - RecyConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/upcycler-dashboard.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div data-include="includes/navbar.html"></div>
+    <script src="js/include-html.js"></script>
+
+    <div class="d-none d-lg-block" style="height: 70px;"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>RecyConnect</h2>
+                <p>Upcycler Dashboard</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-section="dashboard"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li data-section="products"><a href="#"><i class="fas fa-recycle"></i> My Products</a></li>
+                    <li data-section="add-product"><a href="#"><i class="fas fa-plus-circle"></i> Add Product</a></li>
+                    <li data-section="orders"><a href="#"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                    <li data-section="analytics"><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li data-section="messages"><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li data-section="settings"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar (keep existing dashboard top-bar; inject Home navbar above main layout) -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search products, orders, or customers...">
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Upcycler+User" alt="Profile">
+                        <span>Upcycler User <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Overview -->
+            <section id="dashboard" class="dashboard-section active">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h1>Welcome back, Upcycler!</h1>
+                        <p>Track your upcycling business and manage your products efficiently.</p>
+                    </div>
+                    <div class="banner-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h3>+12.5%</h3>
+                                <p>Growth this month</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h3>4.8</h3>
+                                <p>Average rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Products</h3>
+                            <p class="stat-number">47</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Orders</h3>
+                            <p class="stat-number">128</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Revenue</h3>
+                            <p class="stat-number">$3,845</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 15% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Customers</h3>
+                            <p class="stat-number">89</p>
+                            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Revenue Overview</h3>
+                            <div class="chart-actions">
+                                <button class="chart-period active">Week</button>
+                                <button class="chart-period">Month</button>
+                                <button class="chart-period">Year</button>
+                            </div>
+                        </div>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Top Selling Products</h3>
+                            <button class="view-all">View All</button>
+                        </div>
+                        <canvas id="productsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-7841</td>
+                                    <td>
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+                                        <span>Sarah Johnson</span>
+                                    </td>
+                                    <td>Upcycled Denim Tote</td>
+                                    <td>Nov 20, 2023</td>
+                                    <td>$45.99</td>
+                                    <td><span class="status-badge shipped">Shipped</span></td>
+                                    <td>
+                                        <button class="btn-action" title="View Order"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action" title="Print Invoice"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7839</td>
+                                    <td>
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+                                        <span>Michael Chen</span>
+                                    </td>
+                                    <td>Recycled Glass Vase Set</td>
+                                    <td>Nov 19, 2023</td>
+                                    <td>$78.50</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                    <td>
+                                        <button class="btn-action" title="View Order"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action" title="Print Invoice"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7835</td>
+                                    <td>
+                                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer">
+                                        <span>Emily Rodriguez</span>
+                                    </td>
+                                    <td>Upcycled Wooden Shelf</td>
+                                    <td>Nov 18, 2023</td>
+                                    <td>$125.00</td>
+                                    <td><span class="status-badge processing">Processing</span></td>
+                                    <td>
+                                        <button class="btn-action" title="View Order"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action" title="Print Invoice"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7832</td>
+                                    <td>
+                                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer">
+                                        <span>David Kim</span>
+                                    </td>
+                                    <td>Recycled Glassware Set</td>
+                                    <td>Nov 17, 2023</td>
+                                    <td>$92.75</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-action" title="View Order"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action" title="Print Invoice"><i class="fas fa-print"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="dashboard-section">
+                <div class="section-header">
+                    <h2>My Products</h2>
+                    <button id="addNewProduct" class="btn-primary">
+                        <i class="fas fa-plus"></i> Add Product
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <div class="search-filter">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search products...">
+                    </div>
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <select>
+                            <option>All Categories</option>
+                            <option>Furniture</option>
+                            <option>Home Decor</option>
+                            <option>Fashion</option>
+                            <option>Accessories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Status:</label>
+                        <select>
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Out of Stock</option>
+                            <option>Draft</option>
+                        </select>
+                    </div>
+                    <button class="btn-secondary">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Product cards will be dynamically loaded here -->
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-dots">...</button>
+                    <button class="page-btn">8</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Add Product Section -->
+            <section id="add-product" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Add New Product</h2>
+                    <p>Fill in the details below to add a new upcycled product</p>
+                </div>
+                
+                <form id="productForm" class="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Product Name <span class="required">*</span></label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Category <span class="required">*</span></label>
+                            <select id="productCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="home-decor">Home Decor</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="art">Art</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Price ($) <span class="required">*</span></label>
+                            <input type="number" id="productPrice" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock Quantity <span class="required">*</span></label>
+                            <input type="number" id="productStock" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Description <span class="required">*</span></label>
+                        <textarea id="productDescription" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Product Images <span class="required">*</span></label>
+                        <div class="image-upload-container">
+                            <div class="upload-area" id="dropZone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop images here or click to browse</p>
+                                <span class="upload-hint">JPG, PNG up to 5MB</span>
+                                <input type="file" id="productImages" multiple accept="image/*" style="display: none;">
+                            </div>
+                            <div class="image-preview" id="imagePreview">
+                                <!-- Preview images will be added here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="saveDraft">Save as Draft</button>
+                        <button type="submit" class="btn-primary">Publish Product</button>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Orders Section -->
+            <section id="orders" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Order Management</h2>
+                    <div class="export-actions">
+                        <button class="btn-secondary"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+                
+                <div class="order-filters">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All Orders (24)</button>
+                        <button class="filter-tab">Pending (5)</button>
+                        <button class="filter-tab">Processing (3)</button>
+                        <button class="filter-tab">Shipped (8)</button>
+                        <button class="filter-tab">Delivered (7)</button>
+                        <button class="filter-tab">Cancelled (1)</button>
+                    </div>
+                    
+                    <div class="date-range-picker">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>Nov 1, 2023 - Nov 21, 2023</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div class="orders-table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllOrders"></th>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Order rows will be dynamically loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="rows-per-page">
+                        <span>Rows per page:</span>
+                        <select>
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </div>
+                    <div class="pagination">
+                        <span>1-10 of 24</span>
+                        <button class="pagination-arrow" disabled><i class="fas fa-chevron-left"></i></button>
+                        <button class="pagination-arrow"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Analytics Section -->
+            <section id="analytics" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Business Analytics</h2>
+                    <div class="analytics-period">
+                        <button class="period-btn active">This Month</button>
+                        <button class="period-btn">Last Month</button>
+                        <button class="period-btn">This Year</button>
+                        <div class="custom-date-picker">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Custom Range</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-cards">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Total Revenue</h3>
+                            <div class="card-actions">
+                                <button class="card-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h2>$2,845.60</h2>
+                            <p class="positive"><i class="fas fa-arrow-up"></i> 12.5% from last month</p>
+                        </div>
+                        <div class="card-chart">
+                            <canvas id="revenueTrendChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Orders</h3>
+                            <div class="card-actions">
+                                <button class="card-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h2>47</h2>
+                            <p class="positive"><i class="fas fa-arrow-up"></i> 8.2% from last month</p>
+                        </div>
+                        <div class="card-chart">
+                            <canvas id="ordersTrendChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Average Order Value</h3>
+                            <div class="card-actions">
+                                <button class="card-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h2>$60.55</h2>
+                            <p class="positive"><i class="fas fa-arrow-up"></i> 4.1% from last month</p>
+                        </div>
+                        <div class="card-chart">
+                            <canvas id="aovTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-charts-row">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>Sales Performance</h3>
+                            <div class="chart-actions">
+                                <button class="chart-period active">Week</button>
+                                <button class="chart-period">Month</button>
+                                <button class="chart-period">Year</button>
+                            </div>
+                        </div>
+                        <canvas id="salesPerformanceChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container medium">
+                        <div class="chart-header">
+                            <h3>Top Products</h3>
+                            <button class="view-all">View All</button>
+                        </div>
+                        <div class="top-products-list" id="topProductsList">
+                            <!-- Top products will be dynamically loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-charts-row">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Sales by Category</h3>
+                        </div>
+                        <canvas id="salesByCategoryChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Customer Acquisition</h3>
+                        </div>
+                        <canvas id="customerAcquisitionChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Order Status</h3>
+                        </div>
+                        <canvas id="orderStatusChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Product</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Product form will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div class="notification-toast" id="successToast">
+        <div class="toast-icon success">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="toast-content">
+            <h4>Success!</h4>
+            <p>Your product has been added successfully.</p>
+        </div>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/upcycler-dashboard.js"></script>
+</body>
+</html>

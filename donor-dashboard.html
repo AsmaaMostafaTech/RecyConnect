@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Dashboard - RecyConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/donor-dashboard.css">
+</head>
+<body>
+    <div data-include="includes/navbar.html"></div>
+    <script src="js/include-html.js"></script>
+
+    <div class="d-none d-lg-block" style="height: 70px;"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>RecyConnect</h2>
+                <p>Donor Dashboard</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#donations"><i class="fas fa-utensils"></i> My Donations</a></li>
+                    <li><a href="#new-donation"><i class="fas fa-plus-circle"></i> New Donation</a></li>
+                    <li><a href="#stats"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search donations...">
+                </div>
+                <div class="user-info">
+                    <span class="notification"><i class="far fa-bell"></i><span class="badge">3</span></span>
+                    <div class="user">
+                        <img src="https://ui-avatars.com/api/?name=Donor+User" alt="User">
+                        <span>Donor User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="stats-cards">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="card-info">
+                        <h3>Meals Donated</h3>
+                        <p class="number">1,245</p>
+                        <p class="trend up"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="card-info">
+                        <h3>Active Locations</h3>
+                        <p class="number">8</p>
+                        <p class="trend up"><i class="fas fa-arrow-up"></i> 2 new this month</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-info">
+                        <h3>Completed Donations</h3>
+                        <p class="number">87</p>
+                        <p class="trend up"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Donations -->
+            <section class="recent-donations">
+                <div class="section-header">
+                    <h2>Recent Donations</h2>
+                    <a href="#view-all" class="view-all">View All</a>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/40" alt="Bread">
+                                    <span>Fresh Baguettes</span>
+                                </td>
+                                <td>20 pieces</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>Nov 20, 2023</td>
+                                <td>Downtown Bakery</td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Print Receipt"><i class="fas fa-print"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/40" alt="Fruits">
+                                    <span>Assorted Fruits</span>
+                                </td>
+                                <td>15 kg</td>
+                                <td><span class="status in-progress">In Progress</span></td>
+                                <td>Nov 18, 2023</td>
+                                <td>Green Valley Farm</td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Track"><i class="fas fa-map-marker-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/40" alt="Vegetables">
+                                    <span>Fresh Vegetables</span>
+                                </td>
+                                <td>25 kg</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>Nov 15, 2023</td>
+                                <td>Sunshine Market</td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="View Details"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- New Donation Form (Initially Hidden) -->
+            <section id="donation-form" class="donation-form hidden">
+                <div class="form-header">
+                    <h2>New Donation</h2>
+                    <button id="close-form" class="btn-icon"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="newDonationForm">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" id="itemName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unit">Unit</label>
+                            <select id="unit" required>
+                                <option value="pieces">Pieces</option>
+                                <option value="kg">Kilograms</option>
+                                <option value="liters">Liters</option>
+                                <option value="boxes">Boxes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="date" id="expiryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Pickup Location</label>
+                        <input type="text" id="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Images</label>
+                        <div class="image-upload">
+                            <input type="file" id="itemImages" accept="image/*" multiple>
+                            <label for="itemImages" class="upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload or drag and drop</span>
+                                <small>PNG, JPG up to 5MB</small>
+                            </label>
+                        </div>
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelDonation">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Donation</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Donation Button (Floating) -->
+    <button id="addDonationBtn" class="floating-btn">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/donor-dashboard.js"></script>
+</body>
+</html>
