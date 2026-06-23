@@ -236,6 +236,7 @@ export async function GET() {
     return NextResponse.json({ message: 'Database seeded successfully' })
   } catch (error) {
     console.error('Seed error:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    console.error('Error details:', JSON.stringify(error, null, 2))
+    return NextResponse.json({ error: 'Internal server error', details: String(error) }, { status: 500 })
   }
 }
