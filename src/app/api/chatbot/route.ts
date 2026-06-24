@@ -113,6 +113,10 @@ export async function POST(request: NextRequest) {
       success: true,
       response: aiResponse,
       sessionId: sessionKey
+    }, {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
     })
 
   } catch (error) {
